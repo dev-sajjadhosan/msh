@@ -38,7 +38,7 @@ export function FloatingNav() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 20 }}
-          className="fixed bottom-24 right-8 z-[9000] flex flex-col gap-2"
+          className="fixed bottom-24 right-8 z-[9000] flex flex-col gap-2 items-center"
         >
           <button
             onClick={() => scrollTo('top')}
@@ -58,7 +58,7 @@ export function FloatingNav() {
 
           {/* Quick Nav Indicator */}
           <div className="flex flex-col items-center gap-1.5 mt-2 opacity-30 select-none">
-             <div className="w-px h-8 bg-accent" />
+             <div className="w-px h-10 bg-accent" />
              <span className="font-mono text-[0.5rem] text-accent font-bold uppercase vertical-text tracking-[0.2em]">Quick_Nav</span>
           </div>
         </motion.div>

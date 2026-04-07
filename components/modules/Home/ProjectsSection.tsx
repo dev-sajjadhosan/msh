@@ -13,75 +13,105 @@ import {
   BookOpen,
   Target,
   AlertCircle,
+  Sparkles,
 } from "lucide-react";
 import { magneticEffect } from "@/lib/animations";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+
+import censura from "@/public/project/censura.png";
+import cineOtaku from "@/public/project/cineOtaku.png";
+import nostrumStore from "@/public/project/nostrumStore.png";
 
 const PROJECTS = [
   {
     id: "01",
     title: "Censura",
     description:
-      "Cinematic media review & streaming platform with subscriptions, rentals, admin panel, and full auth flows.",
-    mockup:
-      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=1200",
+      "A high-performance cinematic ecosystem built with Next.js 16, designed to bridge the gap between media criticism and content consumption. The platform features a robust subscription-based streaming model, an advanced admin orchestration panel, and a secure, multi-layered authentication system using Better-Auth.",
+    mockup: censura.src,
     video: "#",
-    why: "I wanted to bridge the gap between static reviews and interactive streaming. Most platforms provide one or the other; Censura provides a unified cinematic ecosystem.",
+    why: "I wanted to create a unified space where independent filmmakers can monetize their work through rentals and subscriptions while providing critics with a production-grade platform for deep-dive reviews.",
     learnings:
-      "Mastering Next.js 15 Server Components and complex Stripe webhook integrations for subscription lifecycles.",
+      "Mastering Next.js 16 Server Components, implementing complex Stripe webhook lifecycles for real-time subscription management, and managing global server state with TanStack Query.",
     purpose:
-      "To provide a production-grade template for independent filmmakers and reviewers to monetize and manage their catalogue.",
-    tech: ["Next.js", "Prisma", "Stripe", "PostgreSQL"],
-    links: { live: "#", repo: "#" },
+      "To serve as a production-ready SaaS template for digital media distribution and community-driven film reviews.",
+    tech: [
+      "Next.js 16",
+      "TypeScript",
+      "Stripe",
+      "PostgreSQL",
+      "Prisma",
+      "TanStack Query",
+    ],
+    links: {
+      live: "https://censura.vercel.app",
+      repo: "https://github.com/dev-sajjadhosan/censura/tree/main/client",
+    },
+    improvements: [
+      "AI-driven dynamic thumbnail generation",
+      "Multi-language localization (i18n)",
+      "Real-time watch party integration using WebSockets",
+    ],
   },
   {
     id: "02",
-    title: "LinksNest",
+    title: "CineOtaku",
     description:
-      "Linktree × Bitly hybrid with A/B traffic splitting, conditional links, expiry, and Link-in-Bio pages.",
-    mockup:
-      "https://images.unsplash.com/photo-1551288049-bbda3ec6b0a9?auto=format&fit=crop&q=80&w=1200",
+      "A specialized discovery engine for anime enthusiasts that tackles 'choice-fatigue' through algorithmic curation. Built on the Jikan and TMDB APIs, it features a fluid, motion-rich interface for tracking seasonal releases, managing personalized watchlists, and exploring deep metadata for thousands of titles.",
+    mockup: cineOtaku.src,
     video: "#",
-    why: "Universal link tools are either too simple or too expensive. LinksNest brings enterprise-grade analytics to casual creators.",
+    why: "Finding 'what to watch' is often more time-consuming than the viewing itself. CineOtaku was built to streamline discovery through a highly responsive, data-driven UI.",
     learnings:
-      "Deep dive into URL shortening logic, QR code generation, and real-time analytics aggregation using TanStack Query.",
+      "Integrating multiple third-party APIs with high performance, managing complex client-side filtering logic, and implementing smooth UI transitions with Framer Motion.",
     purpose:
-      "Empowering small creators with professional marketing tools without the recurring SaaS tax.",
-    tech: ["React", "Express", "Vercel", "Tailwind"],
-    links: { live: "#", repo: "#" },
+      "A technical playground for exploring state-driven UI patterns and complex cinematic data visualization.",
+    tech: [
+      "React.js",
+      "Tailwind CSS",
+      "Firebase",
+      "MongoDB",
+      "Express",
+      "Framer Motion",
+    ],
+    links: {
+      live: "https://cineotaku0.web.app",
+      repo: "https://github.com/dev-sajjadhosan/CineOtaku",
+    },
+    improvements: [
+      "Personalized recommendation engine using Machine Learning",
+      "Social watchlist sharing and user 'Family' groups",
+      "Offline support via Progressive Web App (PWA) features",
+    ],
   },
   {
     id: "03",
-    title: "Planora",
+    title: "Nostrum Store",
     description:
-      "Event management platform with real-time scheduling, attendee management, and ticketing system.",
-    mockup:
-      "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&q=80&w=1200",
+      "A digital pharmaceutical platform that blends modern clinical science with a personalized apothecary experience. Named after the Latin 'Our Remedy,' this full-stack e-commerce solution manages sensitive medicine categories, secure user prescriptions, and seamless payment gateway integrations.",
+    mockup: nostrumStore.src,
     video: "#",
-    why: "Managing events is a logistical nightmare. Planora centralizes the 'chaos' into a single intuitive dashboard.",
+    why: "In an era of mass-produced healthcare, I chose a name that reflects a personalized commitment to healing—reviving the sense of ownership and dedication found in traditional 'Nostrums' or signature remedies.",
     learnings:
-      "Handling real-time state synchronization for ticketing and building a dynamic floor-plan designer from scratch.",
+      "Architecting a secure e-commerce flow for healthcare products, managing inventory state in a full-stack environment, and designing a trust-centric user experience.",
     purpose:
-      "Providing a robust, white-labeled solution for event organizers to handle ticketing without middle-man fees.",
-    tech: ["Node.js", "Redux", "Zod", "Framer"],
-    links: { live: "#", repo: "#" },
-  },
-  {
-    id: "04",
-    title: "CineVault",
-    description:
-      "Early prototype for curated cinema discovery with watchlists, reviews, and recommendation engine.",
-    mockup:
-      "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1200",
-    video: "#",
-    why: "Finding 'what to watch' is often harder than watching itself. CineVault uses algorithmic discovery to solve choice-fatigue.",
-    learnings:
-      "Implementing complex filtering logic and integrating third-party movie databases with high performance.",
-    purpose:
-      "A personal playground for exploring state-driven UI patterns and cinematic data visualization.",
-    tech: ["TypeScript", "GSAP", "Radix UI", "TanStack"],
-    links: { live: "#", repo: "#" },
+      "To provide a highly secure and community-focused bridge between ancient herbal wisdom and modern digital pharmacy needs.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Payment Gateway",
+    ],
+    links: {
+      live: "https://nostrum-store.vercel.app",
+      repo: "https://github.com/dev-sajjadhosan/NostrumStore",
+    },
+    improvements: [
+      "AI-powered symptom checker and product matching",
+      "Telemedicine consultation scheduling",
+      "Automated prescription renewal system",
+    ],
   },
 ];
 
@@ -109,7 +139,7 @@ export default function ProjectsSection() {
         </div>
       </div>
 
-      <div className="pg grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="pg grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {PROJECTS.map((project, i) => (
           <ProjectCard
             key={project.id}
@@ -118,6 +148,8 @@ export default function ProjectsSection() {
           />
         ))}
       </div>
+
+      <h3 className="text-lg text-center mt-10 font-mono text-muted">Cooming Something amazing projects...</h3>
 
       <AnimatePresence>
         {selectedProject && (
@@ -184,15 +216,31 @@ function ProjectCard({
       </div>
 
       <div className="relative z-10 p-8 pt-0 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 perspective-1000">
-        <div style={{ transform: 'translateZ(30px)' }} className="font-mono text-[0.6rem] text-accent tracking-[0.2em] uppercase mb-2 opacity-60">
+        <div
+          style={{ transform: "translateZ(30px)" }}
+          className="font-mono text-[0.6rem] text-accent tracking-[0.2em] uppercase mb-2 opacity-60"
+        >
           Project {project.id}
         </div>
-        <h3 style={{ transform: 'translateZ(50px)' }} className="text-3xl font-extrabold tracking-tighter mb-3 group-hover:text-accent transition-colors">
+        <h3
+          style={{ transform: "translateZ(50px)" }}
+          className="text-3xl font-extrabold tracking-tighter mb-3 group-hover:text-accent transition-colors"
+        >
           {project.title}
         </h3>
-        <p style={{ transform: 'translateZ(20px)' }} className="font-mono text-[0.68rem] leading-relaxed line-clamp-2 max-w-[90%] opacity-0 group-hover:opacity-100 transition-all duration-500">
+        <p
+          style={{ transform: "translateZ(20px)" }}
+          className="font-mono text-[0.68rem] leading-relaxed line-clamp-2 max-w-[90%] opacity-0 group-hover:opacity-100 transition-all duration-500 mb-6"
+        >
           {project.description}
         </p>
+
+        <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-100">
+          <span className="font-mono text-[0.6rem] text-accent tracking-widest uppercase font-bold">
+            View Details
+          </span>
+          <span className="w-8 h-px bg-accent" />
+        </div>
       </div>
 
       <div className="absolute top-6 right-6 z-20 flex gap-2">
@@ -248,13 +296,13 @@ function ProjectOverlay({
           alt={project.title}
           className="w-full h-full object-cover grayscale transition-transform duration-1000 scale-105 hover:scale-100"
         />
-
+        {/* 
         <button
           ref={playBtnRef}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-24 h-24 rounded-full border border-accent/30 bg-accent text-bg flex items-center justify-center hover:scale-110 transition-transform"
         >
           <Play className="size-11 text-black" />
-        </button>
+        </button> */}
 
         <div className="absolute bottom-10 left-10 z-20">
           <div className="font-mono text-[0.6rem] text-accent tracking-[0.2em] uppercase mb-2">
@@ -330,16 +378,34 @@ function ProjectOverlay({
             </p>
           </div>
 
+          {/* New: Improvements */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 font-mono text-[0.65rem] tracking-widest uppercase">
+              <Sparkles size={12} className="text-accent" /> Future Plans
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {project.improvements?.map((imp: string) => (
+                <div
+                  key={imp}
+                  className="px-4 py-2 bg-accent/5 border border-accent/20 rounded-lg font-mono text-[0.65rem] flex items-center gap-2"
+                >
+                  <div className="w-1.5 h-1.5 bg-accent rounded-full" />
+                  {imp}
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Navigation/Actions */}
           <div className="pt-10 flex gap-4">
             <Link
-              href="#"
+              href={project.links.live}
               className="flex-1 flex items-center justify-center gap-3 bg-accent text-black px-8 py-4 font-mono text-[0.7rem] font-bold tracking-widest uppercase hover:brightness-110 transition-all rounded-xl"
             >
               Launch <ExternalLink size={14} />
             </Link>
             <Link
-              href="#"
+              href={project.links.repo}
               className="flex items-center justify-center gap-3 border border-border px-8 py-4 font-mono text-[0.7rem] font-bold tracking-widest uppercase hover:bg-white/5 transition-all text-white rounded-xl"
             >
               <Github size={14} /> Repository

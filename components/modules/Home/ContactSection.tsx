@@ -35,7 +35,7 @@ export default function ContactSection() {
   const socials = [
     { name: "GitHub", href: "https://github.com/sajjadhosan", icon: <Github size={14} /> },
     { name: "LinkedIn", href: "https://linkedin.com/in/sajjadhosan", icon: <Linkedin size={14} /> },
-    { name: "Twitter", href: "https://twitter.com/sajjadhosan", icon: <Twitter size={14} /> },
+    { name: "Twitter", href: "https://twitter.com/sajjadhosan", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg> },
   ];
 
   return (
@@ -48,7 +48,7 @@ export default function ContactSection() {
       </div>
 
       <div className="sl font-mono text-[0.66rem] text-accent tracking-[0.22em] uppercase mb-9.5 flex items-center justify-center gap-3">
-        <span className="sn text-[0.58rem] text-muted">06</span>
+        <span className="sn text-[0.58rem] text-muted">07</span>
         Contact
         <span className="ln flex-1 h-px bg-border max-w-[55px]" />
       </div>
@@ -61,6 +61,18 @@ export default function ContactSection() {
       <p className="cs font-mono text-[0.78rem] text-muted max-w-[420px] mx-auto mb-12 leading-[1.9] relative">
         Open to freelance projects, full-time roles, and interesting collaborations. If you have something worth building — let's talk.
       </p>
+
+      {/* Direct Contact Info */}
+      <div className="flex flex-col items-center gap-2 mb-12 font-mono text-[0.75rem] text-muted relative">
+        <div className="flex items-center gap-4">
+          <span className="text-accent uppercase tracking-widest text-[0.6rem]">Phone:</span>
+          <span className="text-white">+880 1234 567890</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <span className="text-accent uppercase tracking-widest text-[0.6rem]">WhatsApp:</span>
+          <span className="text-white">+880 1234 567890</span>
+        </div>
+      </div>
 
       <div className="bts flex flex-wrap justify-center gap-3.5 relative">
         <Link

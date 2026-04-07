@@ -35,9 +35,11 @@ export default function Footer() {
   }, []);
 
   const footerLinks = [
-    { name: "Home", href: "#home" },
+    { name: "Home", href: "#hero" },
     { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
+    { name: "Education", href: "#education" },
     { name: "Experience", href: "#experience" },
     { name: "Contact", href: "#contact" },
   ];
@@ -45,7 +47,7 @@ export default function Footer() {
   const socialLinks = [
     { name: "GitHub", href: "https://github.com/sajjadhosan", icon: <Github size={18} /> },
     { name: "LinkedIn", href: "https://linkedin.com/in/sajjadhosan", icon: <Linkedin size={18} /> },
-    { name: "Twitter", href: "https://twitter.com/sajjadhosan", icon: <Twitter size={18} /> },
+    { name: "Twitter", href: "https://twitter.com/sajjadhosan", icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg> },
     { name: "Instagram", href: "#", icon: <Instagram size={18} /> },
   ];
 

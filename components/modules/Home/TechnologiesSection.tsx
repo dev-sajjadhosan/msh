@@ -4,174 +4,530 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { X, ExternalLink, Zap, Terminal, Cpu } from "lucide-react";
 import { magneticEffect } from "@/lib/animations";
+import {
+  Nextjs,
+  ReactDark,
+  TypeScript,
+  TailwindCSS,
+  ShadcnUiDark,
+  TanStack,
+  FramerDark,
+  HTML5,
+  CSS,
+  Figma,
+  Nodejs,
+  ExpressjsDark,
+  PrismaDark,
+  PostgreSQL,
+  Zod,
+  Stripe,
+  VercelDark,
+  Docker,
+  Linux,
+  Git,
+  GitHubDark,
+  VisualStudioCode,
+  GoogleAntigravity,
+  CursorDark,
+  Postman,
+  ReactRouter,
+  Vite,
+  SocketIODark,
+  CPlusPlus,
+  C,
+  Electron,
+  RailwayDark,
+  Ubuntu,
+  NodejsUrl,
+  BetterAuthDark,
+  JWT,
+  Vitest,
+  Gemini,
+  ClaudeAI,
+  OpenAIDark,
+  ManusDark,
+  Apidog,
+  Supabase,
+  Neon,
+  Pinterest,
+  Chrome,
+  ZenBrowserDark,
+  Edge,
+  GrokDark,
+  GitHubUrl,
+  GitUrl,
+  MongoDBDark,
+} from "@ridemountainpig/svgl-react";
 
 const STACK_1 = [
-  "Next.js 15", "TypeScript", "React", "Node.js", "Express", 
-  "Prisma ORM", "PostgreSQL", "Stripe", "Tailwind CSS", "Zod", 
-  "shadcn/ui", "TanStack Query"
+  "Next.js 15",
+  "TypeScript",
+  "React",
+  "Node.js",
+  "Express",
+  "Prisma ORM",
+  "PostgreSQL",
+  "Stripe",
+  "Tailwind CSS",
+  "Zod",
+  "shadcn/ui",
+  "TanStack Query",
 ];
 
 const STACK_2 = [
-  "Git & GitHub", "Vercel", "Better Auth", "TanStack Form", "HTML5", 
-  "CSS3", "REST APIs", "JWT Auth", "Docker", "Linux", 
-  "Figma", "VS Code"
+  "Git & GitHub",
+  "Vercel",
+  "Better Auth",
+  "TanStack Form",
+  "HTML5",
+  "CSS3",
+  "REST APIs",
+  "JWT Auth",
+  "Docker",
+  "Linux",
+  "Figma",
+  "VS Code",
 ];
 
 const CATEGORIZED_TECH = [
   // Frontend
-  { 
-    name: "Next.js", icon: "▲", category: "frontend",
-    exp: 95, love: "Architecting performance-first Next.js applications with the App Router and SSR.",
+  {
+    name: "Next.js",
+    icon: <Nextjs className="w-full h-full" />,
+    category: "frontend",
+    exp: 95,
+    love: "Architecting performance-first Next.js applications with the App Router and SSR.",
     projects: ["Censura", "Portfolio V2", "LinksNest"],
-    features: ["Server Components", "Streaming", "Edge Runtime"]
+    features: ["Server Components", "Streaming", "Edge Runtime"],
   },
-  { 
-    name: "React", icon: "⚛", category: "frontend",
-    exp: 98, love: "Building complex UIs with custom hooks and high-performance state patterns.",
+  {
+    name: "React",
+    icon: <ReactDark className="w-full h-full" />,
+    category: "frontend",
+    exp: 98,
+    love: "Building complex UIs with custom hooks and high-performance state patterns.",
     projects: ["All Front-end Projects"],
-    features: ["Hooks", "Concurrent Mode", "Virtual DOM"]
+    features: ["Hooks", "Concurrent Mode", "Virtual DOM"],
   },
-  { 
-    name: "TypeScript", icon: "🔷", category: "frontend",
-    exp: 92, love: "Type-safe development processes to eliminate runtime errors before deployment.",
+  {
+    name: "TypeScript",
+    icon: <TypeScript className="w-full h-full" />,
+    category: "frontend",
+    exp: 92,
+    love: "Type-safe development processes to eliminate runtime errors before deployment.",
     projects: ["Censura", "SaaS Boilerplate"],
-    features: ["Type Safety", "Interfaces", "Generics"]
+    features: ["Type Safety", "Interfaces", "Generics"],
   },
-  { 
-    name: "Tailwind", icon: "🌊", category: "frontend",
-    exp: 99, love: "Mastering utility-first styling for lightning-fast responsive UI development.",
+  {
+    name: "Tailwind",
+    icon: <TailwindCSS className="w-full h-full" />,
+    category: "frontend",
+    exp: 99,
+    love: "Mastering utility-first styling for lightning-fast responsive UI development.",
     projects: ["Censura", "Portfolio", "LinksNest"],
-    features: ["JIT Compiler", "Custom Themes", "Responsive Grid"]
+    features: ["JIT Compiler", "Custom Themes", "Responsive Grid"],
   },
-  { 
-    name: "shadcn/ui", icon: "✨", category: "frontend",
-    exp: 97, love: "The gold standard for accessible, beautiful components. It saves weeks of dev time.",
+  {
+    name: "shadcn/ui",
+    icon: <ShadcnUiDark className="w-full h-full" />,
+    category: "frontend",
+    exp: 97,
+    love: "The gold standard for accessible, beautiful components. It saves weeks of dev time.",
     projects: ["Censura", "SaaS Dashboards"],
-    features: ["Radix UI", "Accessibility", "Tailwind Integration"]
+    features: ["Radix UI", "Accessibility", "Tailwind Integration"],
   },
-  { 
-    name: "TanStack", icon: "📦", category: "frontend",
-    exp: 94, love: "Robust state management for complex data fetching and form handling.",
+  {
+    name: "TanStack",
+    icon: <TanStack className="w-full h-full" />,
+    category: "frontend",
+    exp: 94,
+    love: "Robust state management for complex data fetching and form handling.",
     projects: ["Censura", "LinksNest"],
-    features: ["Query", "Form", "Table"]
+    features: ["Query", "Form", "Table"],
   },
-  { 
-    name: "Framer Motion", icon: "🪄", category: "frontend",
-    exp: 90, love: "Crafting production-grade web animations that are both smooth and declarative.",
+  {
+    name: "Framer Motion",
+    icon: <FramerDark className="w-full h-full" />,
+    category: "frontend",
+    exp: 90,
+    love: "Crafting production-grade web animations that are both smooth and declarative.",
     projects: ["Portfolio", "HUD Modules"],
-    features: ["Layout Transitions", "Gestures", "Variants"]
+    features: ["Layout Transitions", "Gestures", "Variants"],
   },
-  { 
-    name: "GSAP", icon: "🟢", category: "frontend",
-    exp: 88, love: "High-end scroll-triggered animations and complex timeline orchestrations.",
-    projects: ["Portfolio Hero", "About Section"],
-    features: ["ScrollTrigger", "Draggable", "Flip Plugin"]
+  {
+    name: "Vite",
+    icon: <Vite className="w-full h-full" />,
+    category: "frontend",
+    exp: 92,
+    love: "Blazing fast build tool for modern web development.",
+    projects: ["Micro-services", "Static Sites"],
+    features: ["HMR", "Build Speed", "Plugin Ecosystem"],
   },
-  { 
-    name: "HTML5", icon: "🔥", category: "frontend",
-    exp: 99, love: "Semantic structure as the foundation for all modern web experiences.",
+  {
+    name: "React Router",
+    icon: <ReactRouter className="w-full h-full" />,
+    category: "frontend",
+    exp: 88,
+    love: "The standard for declarative routing in React applications.",
+    projects: ["Dashboard Apps"],
+    features: ["Data Loading", "Nested Routes", "Loaders"],
+  },
+  {
+    name: "HTML5",
+    icon: <HTML5 className="w-full h-full" />,
+    category: "frontend",
+    exp: 99,
+    love: "Semantic structure as the foundation for all modern web experiences.",
     projects: ["All Projects"],
-    features: ["Semantics", "SEO", "Accessibility"]
+    features: ["Semantics", "SEO", "Accessibility"],
   },
-  { 
-    name: "CSS3", icon: "🎨", category: "frontend",
-    exp: 95, love: "Mastering layout engines, variables, and complex animations.",
+  {
+    name: "CSS3",
+    icon: <CSS className="w-full h-full" />,
+    category: "frontend",
+    exp: 95,
+    love: "Mastering layout engines, variables, and complex animations.",
     projects: ["Custom Projects"],
-    features: ["Flexbox", "CSS Grid", "Variables"]
+    features: ["Flexbox", "CSS Grid", "Variables"],
   },
-  { 
-    name: "Figma", icon: "🎨", category: "frontend",
-    exp: 82, love: "Translating designer vision into pixel-perfect technical implementation.",
+  {
+    name: "Figma",
+    icon: <Figma className="w-full h-full" />,
+    category: "frontend",
+    exp: 82,
+    love: "Translating designer vision into pixel-perfect technical implementation.",
     projects: ["UI Designs"],
-    features: ["Auto-Layout", "Prototyping", "Design Systems"]
+    features: ["Auto-Layout", "Prototyping", "Design Systems"],
   },
-  
+
   // Backend
-  { 
-    name: "Node.js", icon: "🟢", category: "backend",
-    exp: 88, love: "High-performance event-driven backend systems for scalable architectures.",
+  {
+    name: "Node.js",
+    icon: <Nodejs className="w-full h-full" />,
+    category: "backend",
+    exp: 88,
+    love: "High-performance event-driven backend systems for scalable architectures.",
     projects: ["Auth API", "Chat Engine"],
-    features: ["Non-blocking I/O", "Worker Threads", "Fastify"]
+    features: ["Non-blocking I/O", "Worker Threads", "Fastify"],
   },
-  { 
-    name: "Express", icon: "🚂", category: "backend",
-    exp: 92, love: "Minimalist and flexible routing for high-speed RESTful API development.",
+  {
+    name: "Express",
+    icon: <ExpressjsDark className="w-full h-full" />,
+    category: "backend",
+    exp: 92,
+    love: "Minimalist and flexible routing for high-speed RESTful API development.",
     projects: ["Censura API", "Social Backend"],
-    features: ["Middleware", "Routing", "Performance"]
+    features: ["Middleware", "Routing", "Performance"],
   },
-  { 
-    name: "Prisma", icon: "◼", category: "backend",
-    exp: 90, love: "Deep-level database modeling and type-safe query engineering.",
+  {
+    name: "Prisma",
+    icon: <PrismaDark className="w-full h-full" />,
+    category: "backend",
+    exp: 90,
+    love: "Deep-level database modeling and type-safe query engineering.",
     projects: ["Censura", "Platform API"],
-    features: ["Migrations", "Schema Sync", "Typed Queries"]
+    features: ["Migrations", "Schema Sync", "Typed Queries"],
   },
-  { 
-    name: "PostgreSQL", icon: "🐘", category: "backend",
-    exp: 85, love: "Robust, reliable, and powerful. My go-to for production-grade structured data.",
+  {
+    name: "PostgreSQL",
+    icon: <PostgreSQL className="w-full h-full" />,
+    category: "backend",
+    exp: 85,
+    love: "Robust, reliable, and powerful. My go-to for production-grade structured data.",
     projects: ["Censura", "Platform DB"],
-    features: ["Relational Data", "JSONB", "Indexing"]
+    features: ["Relational Data", "JSONB", "Indexing"],
   },
-  { 
-    name: "Zod", icon: "✅", category: "backend",
-    exp: 95, love: "Indestructible runtime validation that integrates perfectly with TypeScript.",
+  {
+    name: "Supabase",
+    icon: <Supabase className="w-full h-full" />,
+    category: "backend",
+    exp: 85,
+    love: "The open source Firebase alternative for rapid backend development.",
+    projects: ["Real-time Apps"],
+    features: ["Auth", "Edge Functions", "Storage"],
+  },
+  {
+    name: "MongoDB",
+    icon: <MongoDBDark className="w-full h-full" />,
+    category: "backend",
+    exp: 82,
+    love: "Flexible document-based database for unstructured data systems.",
+    projects: ["Content Management"],
+    features: ["Aggregation", "NoSQL", "Sharding"],
+  },
+  {
+    name: "Neon",
+    icon: <Neon className="w-full h-full" />,
+    category: "backend",
+    exp: 80,
+    love: "Serverless PostgreSQL with branching and instant storage scaling.",
+    projects: ["Serverless backends"],
+    features: ["Branching", "Serverless", "Autoscaling"],
+  },
+  {
+    name: "Zod",
+    icon: <Zod className="w-full h-full" />,
+    category: "backend",
+    exp: 95,
+    love: "Indestructible runtime validation that integrates perfectly with TypeScript.",
     projects: ["Censura", "Input Security"],
-    features: ["Inference", "Validation", "Native TS"]
+    features: ["Inference", "Validation", "Native TS"],
   },
-  { 
-    name: "Better Auth", icon: "🔐", category: "backend",
-    exp: 88, love: "Sophisticated modern auth workflows with deep Next.js integration.",
+  {
+    name: "Socket.io",
+    icon: <SocketIODark className="w-full h-full" />,
+    category: "backend",
+    exp: 84,
+    love: "Real-time, bidirectional and event-based communication.",
+    projects: ["Chat Systems", "Live Analytics"],
+    features: ["WebSockets", "Polling", "Room System"],
+  },
+  {
+    name: "Better Auth",
+    icon: <BetterAuthDark className="w-full h-full" />,
+    category: "backend",
+    exp: 88,
+    love: "Sophisticated modern auth workflows with deep Next.js integration.",
     projects: ["Censura", "SaaS Pro"],
-    features: ["MFA", "OAuth", "Role Access"]
+    features: ["MFA", "OAuth", "Role Access"],
   },
-  { 
-    name: "Stripe", icon: "💳", category: "backend",
-    exp: 80, love: "Complex financial infrastructure for subscription-based business models.",
-    projects: ["Censura Billing", "SaaS"],
-    features: ["Webhooks", "Billing Portal", "Checkout"]
-  },
-  { 
-    name: "REST APIs", icon: "🌐", category: "backend",
-    exp: 94, love: "Architecting clean, scalable, and well-documented API surfaces.",
-    projects: ["Linktree Clone", "Chat System"],
-    features: ["REST Patterns", "Status Codes", "Versioning"]
-  },
-  { 
-    name: "JWT Auth", icon: "🔑", category: "backend",
-    exp: 90, love: "Securing stateless authentication across distributed web systems.",
+  {
+    name: "JWT",
+    icon: <JWT className="w-full h-full" />,
+    category: "backend",
+    exp: 90,
+    love: "Securing stateless authentication across distributed web systems.",
     projects: ["Auth Project", "Legacy Systems"],
-    features: ["Token Rotations", "Verification", "Cookies"]
+    features: ["Token Rotations", "Verification", "Cookies"],
+  },
+  {
+    name: "Stripe",
+    icon: <Stripe className="w-full h-full" />,
+    category: "backend",
+    exp: 80,
+    love: "Complex financial infrastructure for subscription-based business models.",
+    projects: ["Censura Billing", "SaaS"],
+    features: ["Webhooks", "Billing Portal", "Checkout"],
+  },
+  {
+    name: "C++",
+    icon: <CPlusPlus className="w-full h-full" />,
+    category: "backend",
+    exp: 70,
+    love: "High-performance systems programming and complex algorithm implementation.",
+    projects: ["Local Tools", "Core Engine"],
+    features: ["Memory Control", "Static Types", "STL"],
+  },
+  {
+    name: "C",
+    icon: <C className="w-full h-full" />,
+    category: "backend",
+    exp: 75,
+    love: "The foundation of modern computing and low-level resource management.",
+    projects: ["System Programming"],
+    features: ["Pointers", "Registers", "Hardware Int."],
+  },
+
+  // AI & Agents
+  {
+    name: "Gemini",
+    icon: <Gemini className="w-full h-full" />,
+    category: "ai",
+    exp: 90,
+    love: "Integrating Google's most powerful multimodal models into applications.",
+    projects: ["AI Assistants", "Content Engine"],
+    features: ["Multimodal", "Large Context", "Google Cloud"],
+  },
+  {
+    name: "Claude",
+    icon: <ClaudeAI className="w-full h-full" />,
+    category: "ai",
+    exp: 92,
+    love: "Anthropic's high-intelligence models for complex reasoning tasks.",
+    projects: ["Code Analysis", "Data Extraction"],
+    features: ["Artifacts", "Reasoning", "Nuance"],
+  },
+  {
+    name: "OpenAI",
+    icon: <OpenAIDark className="w-full h-full" />,
+    category: "ai",
+    exp: 94,
+    love: "Pioneering AI integration with GPT models and powerful API endpoints.",
+    projects: ["Censura AI", "NLP Systems"],
+    features: ["GPT-4o", "Embeddings", "DALL-E"],
+  },
+  {
+    name: "Manus",
+    icon: <ManusDark className="w-full h-full" />,
+    category: "ai",
+    exp: 85,
+    love: "Exploring the next generation of AI agents and automated workflows.",
+    projects: ["Agent Research"],
+    features: ["Agentic AI", "Automation", "Workflows"],
+  },
+  {
+    name: "Grok",
+    icon: <GrokDark className="w-full h-full" />,
+    category: "ai",
+    exp: 80,
+    love: "Leveraging xAI's real-time information processing and intelligence.",
+    projects: ["Real-time analysis"],
+    features: ["Direct Access", "Speed", "Truthfulness"],
+  },
+  {
+    name: "Google Antigravity",
+    icon: <GoogleAntigravity className="w-full h-full" />,
+    category: "ai",
+    exp: 95,
+    love: "Advanced agentic coding with state-of-the-art AI orchestration.",
+    projects: ["Core Framework"],
+    features: ["Agentic Coding", "Auto-reasoning", "Efficiency"],
+  },
+  {
+    name: "Cursor",
+    icon: <CursorDark className="w-full h-full" />,
+    category: "ai",
+    exp: 96,
+    love: "The AI-first code editor that revolutionizes development speed.",
+    projects: ["Daily Workflow"],
+    features: ["AI Chat", "Composer", "Auto-fix"],
   },
 
   // Tools
-  { 
-    name: "Vercel", icon: "🚀", category: "tools",
-    exp: 95, love: "Production deployment, edge analytics, and infrastructure as code.",
+  {
+    name: "Vercel",
+    icon: <VercelDark className="w-full h-full" />,
+    category: "tools",
+    exp: 95,
+    love: "Production deployment, edge analytics, and infrastructure as code.",
     projects: ["All Prod Projects"],
-    features: ["Analytics", "Previews", "Edge Config"]
+    features: ["Analytics", "Previews", "Edge Config"],
   },
-  { 
-    name: "Docker", icon: "🐳", category: "tools",
-    exp: 75, love: "DevOps container orchestration for cross-platform consistency.",
-    projects: ["Microservices", "Legacy System"],
-    features: ["Containers", "Images", "Composability"]
+  {
+    name: "Railway",
+    icon: <RailwayDark className="w-full h-full" />,
+    category: "tools",
+    exp: 85,
+    love: "Simple, powerful infrastructure for deploying backend services.",
+    projects: ["API Hosting", "Microservices"],
+    features: ["Auto-Deploy", "Custom Domains", "Managed DBs"],
   },
-  { 
-    name: "Linux", icon: "🐧", category: "tools",
-    exp: 85, love: "Professional development environment and server management.",
-    projects: ["Server Deployment", "Hosting"],
-    features: ["Bash", "Cron", "Permissions"]
-  },
-  { 
-    name: "Git / GitHub", icon: "🐙", category: "tools",
-    exp: 94, love: "Version control as the foundation for collaboration and CI/CD.",
+  {
+    name: "GitHub",
+    icon: <GitHubDark className="w-full h-full" />,
+    category: "tools",
+    exp: 94,
+    love: "Version control and collaborative engineering foundation.",
     projects: ["All Workflows"],
-    features: ["Actions", "Branching", "Code Review"]
+    features: ["Actions", "Branching", "Code Review"],
   },
-  { 
-    name: "VS Code", icon: "💻", category: "tools",
-    exp: 98, love: "A highly optimized environment for professional software engineering.",
+  {
+    name: "VS Code",
+    icon: <VisualStudioCode className="w-full h-full" />,
+    category: "tools",
+    exp: 98,
+    love: "The most versatile and highly optimized environment for professional engineering.",
     projects: ["All Daily Work"],
-    features: ["Extensions", "Debugging", "Terminal"]
+    features: ["Extensions", "Debugging", "Terminal"],
+  },
+  {
+    name: "Postman",
+    icon: <Postman className="w-full h-full" />,
+    category: "tools",
+    exp: 90,
+    love: "Essential tool for API development, testing, and documentation.",
+    projects: ["API Testing"],
+    features: ["Collections", "Mock Servers", "Environments"],
+  },
+  {
+    name: "Apidog",
+    icon: <Apidog className="w-full h-full" />,
+    category: "tools",
+    exp: 88,
+    love: "All-in-one API workspace for design, debug, test, and documentation.",
+    projects: ["Full-lifecycle API"],
+    features: ["Design First", "Testing", "Mocking"],
+  },
+  {
+    name: "Docker",
+    icon: <Docker className="w-full h-full" />,
+    category: "tools",
+    exp: 75,
+    love: "DevOps container orchestration for cross-platform consistency.",
+    projects: ["Microservices", "Legacy System"],
+    features: ["Containers", "Images", "Composability"],
+  },
+  {
+    name: "Linux",
+    icon: <Linux className="w-full h-full" />,
+    category: "tools",
+    exp: 85,
+    love: "Professional development environment and server management.",
+    projects: ["Server Deployment", "Hosting"],
+    features: ["Bash", "Cron", "Permissions"],
+  },
+  {
+    name: "Ubuntu",
+    icon: <Ubuntu className="w-full h-full" />,
+    category: "tools",
+    exp: 84,
+    love: "The most popular Linux distribution for developers and servers.",
+    projects: ["OS Environment"],
+    features: ["APT", "Desktop", "Security"],
+  },
+  {
+    name: "Electron",
+    icon: <Electron className="w-full h-full" />,
+    category: "tools",
+    exp: 78,
+    love: "Building cross-platform desktop apps with web technologies.",
+    projects: ["Desktop Modules"],
+    features: ["Inter-process", "Native APIs", "Packaging"],
+  },
+  {
+    name: "Vitest",
+    icon: <Vitest className="w-full h-full" />,
+    category: "tools",
+    exp: 82,
+    love: "Next-generation testing framework powered by Vite.",
+    projects: ["Unit Testing"],
+    features: ["Fast Execution", "Watch Mode", "Coverage"],
+  },
+  {
+    name: "Zen Browser",
+    icon: <ZenBrowserDark className="w-full h-full" />,
+    category: "tools",
+    exp: 80,
+    love: "The ultimate privacy-focused browser for developers.",
+    projects: ["Personal Workflow"],
+    features: ["Privacy", "Speed", "DevTools"],
+  },
+  {
+    name: "Chrome",
+    icon: <Chrome className="w-full h-full" />,
+    category: "tools",
+    exp: 98,
+    love: "The gold standard for web development and debugging.",
+    projects: ["Testing", "Daily Coding"],
+    features: ["DevTools", "Extensions", "V8 Engine"],
+  },
+  {
+    name: "Edge",
+    icon: <Edge className="w-full h-full" />,
+    category: "tools",
+    exp: 92,
+    love: "Microsoft's efficient, Chromium-based browsing experience.",
+    projects: ["Cross-browser check"],
+    features: ["Efficient", "Collections", "Vertical Tabs"],
+  },
+  {
+    name: "Pinterest",
+    icon: <Pinterest className="w-full h-full" />,
+    category: "tools",
+    exp: 75,
+    love: "Curating inspiration and visual moodboards for UI/UX projects.",
+    projects: ["Design Research"],
+    features: ["Visual Search", "Moodboards", "Inspiration"],
   },
 ];
 
@@ -180,18 +536,25 @@ const TABS = [
   { id: "frontend", label: "Front-end" },
   { id: "backend", label: "Back-end" },
   { id: "tools", label: "Tools" },
+  { id: "ai", label: "AI & Agents" },
 ];
 
 export default function TechnologiesSection() {
   const [activeTab, setActiveTab] = useState("all");
-  const [selectedTech, setSelectedTech] = useState<typeof CATEGORIZED_TECH[0] | null>(null);
+  const [selectedTech, setSelectedTech] = useState<
+    (typeof CATEGORIZED_TECH)[0] | null
+  >(null);
 
-  const filteredTech = activeTab === "all" 
-    ? CATEGORIZED_TECH 
-    : CATEGORIZED_TECH.filter(t => t.category === activeTab);
+  const filteredTech =
+    activeTab === "all"
+      ? CATEGORIZED_TECH
+      : CATEGORIZED_TECH.filter((t) => t.category === activeTab);
 
   return (
-    <section id="technologies" className="py-32 px-6 md:px-14 border-t border-border overflow-hidden relative min-h-[900px]">
+    <section
+      id="technologies"
+      className="py-32 px-6 md:px-14 border-t border-border overflow-hidden relative min-h-[900px]"
+    >
       <div className="sl font-mono text-[0.66rem] text-accent tracking-[0.22em] uppercase mb-4 flex items-center gap-3">
         <span className="sn text-[0.58rem] text-muted">03</span>
         Stack
@@ -199,15 +562,23 @@ export default function TechnologiesSection() {
       </div>
 
       <div className="st text-[clamp(2.8rem,7vw,4rem)] font-extrabold tracking-[-0.035em] leading-none mb-18">
-        <div className="tl block overflow-hidden"><span>Core <span className="text-accent italic">Engine</span></span></div>
+        <div className="tl block overflow-hidden">
+          <span>
+            Core <span className="text-accent italic">Engine</span>
+          </span>
+        </div>
       </div>
 
       <div className="space-y-px">
         <div className="mw border-t border-b overflow-hidden">
           <div className="mt animate-[mq_22s_linear_infinite]">
             {[...STACK_1, ...STACK_1, ...STACK_1].map((item, i) => (
-              <span key={i} className="mi inline-flex items-center gap-2.5 px-7 py-4 font-mono text-[0.73rem] text-muted border-r border-border hover:text-accent transition-colors">
-                <span className="md text-accent text-[0.45rem]">◆</span>{item}
+              <span
+                key={i}
+                className="mi inline-flex items-center gap-2.5 px-7 py-4 font-mono text-[0.73rem] text-muted border-r border-border hover:text-accent transition-colors"
+              >
+                <span className="md text-accent text-[0.45rem]">◆</span>
+                {item}
               </span>
             ))}
           </div>
@@ -215,8 +586,12 @@ export default function TechnologiesSection() {
         <div className="mw border-b overflow-hidden">
           <div className="mt animate-[mq_22s_linear_infinite_reverse]">
             {[...STACK_2, ...STACK_2, ...STACK_2].map((item, i) => (
-              <span key={i} className="mi inline-flex items-center gap-2.5 px-7 py-4 font-mono text-[0.73rem] text-muted border-r border-border hover:text-accent transition-colors">
-                <span className="md text-accent text-[0.45rem]">◆</span>{item}
+              <span
+                key={i}
+                className="mi inline-flex items-center gap-2.5 px-7 py-4 font-mono text-[0.73rem] text-muted border-r border-border hover:text-accent transition-colors"
+              >
+                <span className="md text-accent text-[0.45rem]">◆</span>
+                {item}
               </span>
             ))}
           </div>
@@ -226,7 +601,7 @@ export default function TechnologiesSection() {
       <div className="relative mt-20">
         <AnimatePresence mode="wait">
           {!selectedTech ? (
-            <motion.div 
+            <motion.div
               key="grid"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -240,8 +615,8 @@ export default function TechnologiesSection() {
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     className={`px-6 py-2.5 font-mono text-[0.68rem] tracking-widest uppercase transition-all relative overflow-hidden border ${
-                      activeTab === tab.id 
-                        ? "bg-accent text-black border-accent" 
+                      activeTab === tab.id
+                        ? "bg-accent text-black border-accent"
                         : "border-border text-muted hover:border-accent/40"
                     }`}
                   >
@@ -250,17 +625,19 @@ export default function TechnologiesSection() {
                 ))}
               </div>
 
-              <div className="tg grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
+              <div className="tg grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
                 {filteredTech.map((tech, i) => (
                   <motion.div
                     key={tech.name}
                     layoutId={`tech-${tech.name}`}
                     onClick={() => setSelectedTech(tech)}
-                    className="tc group bg-card p-7.5 flex flex-col items-center justify-center text-center transition-all relative overflow-hidden rounded-xl border border-border hover:border-accent/50 cursor-pointer"
+                    className="tc group bg-card p-6 flex flex-col items-center justify-center text-center transition-all relative overflow-hidden rounded-xl border border-border hover:border-accent/50 cursor-pointer"
                   >
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(200,255,0,0.05),transparent)] opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <span className="ico text-[1.7rem] block mb-2.5 relative z-10">{tech.icon}</span>
-                    <span className="nm font-mono text-[0.64rem] text-muted group-hover:text-accent relative z-10 uppercase tracking-widest">
+                    <div className="ico w-8 h-8 flex items-center justify-center mb-3 relative z-10 transition-transform group-hover:scale-110">
+                      {tech.icon}
+                    </div>
+                    <span className="nm font-mono text-[0.6rem] text-muted group-hover:text-accent relative z-10 uppercase tracking-widest truncate w-full px-2">
                       {tech.name}
                     </span>
                   </motion.div>
@@ -271,6 +648,19 @@ export default function TechnologiesSection() {
             <TechHUD tech={selectedTech} onBack={() => setSelectedTech(null)} />
           )}
         </AnimatePresence>
+
+        <div className="mt-15">
+          <div className="flex items-center gap-1.5">
+            <span className="w-14 h-px block bg-accent" />
+            <p className="text-sm font-mono text-accent tracking-wider uppercase">Adaptability</p>
+          </div>
+          <h3 className="text-md text-left font-mono text-neutral-500 mt-3 leading-relaxed">
+            This list isn't exhaustive—it's just my current favorite kit. I
+            don’t limit myself to one technology because great ideas shouldn't
+            get stuck behind a lack of knowledge. I pride myself on learning
+            fast so that the only limit to my projects is my imagination.
+          </h3>
+        </div>
       </div>
     </section>
   );
@@ -284,14 +674,14 @@ function TechHUD({ tech, onBack }: { tech: any; onBack: () => void }) {
   }, []);
 
   return (
-    <motion.div 
+    <motion.div
       key="hud"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="hud-container w-full min-h-[500px] py-12 relative flex flex-col items-center justify-center"
     >
-      <button 
+      <button
         ref={closeBtnRef}
         onClick={onBack}
         className="absolute top-0 right-0 p-4 border border-border text-muted hover:border-accent hover:text-accent transition-all font-mono text-[0.65rem] tracking-widest uppercase flex items-center gap-2 group"
@@ -310,12 +700,17 @@ function TechHUD({ tech, onBack }: { tech: any; onBack: () => void }) {
       <div className="flex flex-col items-center gap-16 relative w-full">
         {/* Central Core */}
         <div className="relative">
-          <motion.div 
+          <motion.div
             layoutId={`tech-${tech.name}`}
             className="w-32 h-32 bg-card border-2 border-accent/20 rounded-2xl flex items-center justify-center text-[4rem] relative z-20"
-            style={{ 
-              boxShadow: `0 0 60px ${tech.category === 'frontend' ? 'rgba(0,255,150,0.15)' : tech.category === 'backend' ? 'rgba(0,100,255,0.15)' : 'rgba(200,255,0,0.15)'}`,
-              borderColor: tech.category === 'frontend' ? 'rgba(0,255,150,0.3)' : tech.category === 'backend' ? 'rgba(0,100,255,0.3)' : 'rgba(200,255,0,0.3)'
+            style={{
+              boxShadow: `0 0 60px ${tech.category === "frontend" ? "rgba(0,255,150,0.15)" : tech.category === "backend" ? "rgba(0,100,255,0.15)" : "rgba(200,255,0,0.15)"}`,
+              borderColor:
+                tech.category === "frontend"
+                  ? "rgba(0,255,150,0.3)"
+                  : tech.category === "backend"
+                    ? "rgba(0,100,255,0.3)"
+                    : "rgba(200,255,0,0.3)",
             }}
           >
             <div className="absolute inset-0 border border-accent/50 animate-ping opacity-20 rounded-2xl" />
@@ -323,30 +718,36 @@ function TechHUD({ tech, onBack }: { tech: any; onBack: () => void }) {
             {tech.icon}
           </motion.div>
           <div className="absolute top-full mt-4 left-1/2 -translate-x-1/2 text-center">
-            <h3 className="font-extrabold text-4xl tracking-tighter uppercase text-accent mb-1">{tech.name}</h3>
-            <div className="font-mono text-[0.6rem] text-muted tracking-[0.3em] uppercase">Technological Core</div>
+            <h3 className="font-extrabold text-4xl tracking-tighter uppercase text-accent mb-1">
+              {tech.name}
+            </h3>
+            <div className="font-mono text-[0.6rem] text-muted tracking-[0.3em] uppercase">
+              Technological Core
+            </div>
           </div>
         </div>
 
         {/* HUD Modules */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[1000px]">
           {/* Module: Stats */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }} 
-            animate={{ opacity: 1, x: 0 }} 
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
             className="hud-mod p-8 bg-card/50 border border-border border-l-2 border-l-accent relative overflow-hidden group"
           >
             <div className="font-mono text-[0.55rem] text-accent tracking-widest uppercase mb-6 flex items-center gap-2">
               <Terminal size={10} /> Runtime performance
             </div>
-            <div className="text-3xl font-extrabold mb-2 text-white">{tech.exp}%</div>
+            <div className="text-3xl font-extrabold mb-2 text-white">
+              {tech.exp}%
+            </div>
             <div className="h-1 w-full bg-white/5 relative">
-              <motion.div 
-                initial={{ width: 0 }} 
-                animate={{ width: `${tech.exp}%` }} 
-                className="absolute inset-0 bg-accent" 
-                transition={{ duration: 1.5, delay: 0.4 }} 
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${tech.exp}%` }}
+                className="absolute inset-0 bg-accent"
+                transition={{ duration: 1.5, delay: 0.4 }}
               />
             </div>
             <p className="mt-6 font-mono text-[0.7rem] text-muted leading-relaxed italic border-l border-white/10 pl-4">
@@ -355,9 +756,9 @@ function TechHUD({ tech, onBack }: { tech: any; onBack: () => void }) {
           </motion.div>
 
           {/* Module: Architecture */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }} 
-            animate={{ opacity: 1, y: 0 }} 
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
             className="hud-mod p-8 bg-card/50 border border-border border-t-2 border-t-accent relative"
           >
@@ -365,21 +766,25 @@ function TechHUD({ tech, onBack }: { tech: any; onBack: () => void }) {
               <Cpu size={10} /> Structural features
             </div>
             <ul className="space-y-3">
-               {tech.features.map((f: string, i: number) => (
-                 <li key={f} className="flex items-center gap-3">
-                   <span className="w-1.5 h-1.5 bg-accent/30 rounded-full" />
-                   <span className="font-mono text-[0.65rem] text-white tracking-wider uppercase">{f}</span>
-                   <span className="flex-1 border-b border-white/5 border-dotted" />
-                   <span className="font-mono text-[0.55rem] text-accent">0{i+1}</span>
-                 </li>
-               ))}
+              {tech.features.map((f: string, i: number) => (
+                <li key={f} className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 bg-accent/30 rounded-full" />
+                  <span className="font-mono text-[0.65rem] text-white tracking-wider uppercase">
+                    {f}
+                  </span>
+                  <span className="flex-1 border-b border-white/5 border-dotted" />
+                  <span className="font-mono text-[0.55rem] text-accent">
+                    0{i + 1}
+                  </span>
+                </li>
+              ))}
             </ul>
           </motion.div>
 
           {/* Module: Projects */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }} 
-            animate={{ opacity: 1, x: 0 }} 
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
             className="hud-mod p-8 bg-card/50 border border-border border-r-2 border-r-accent relative"
           >
@@ -389,8 +794,12 @@ function TechHUD({ tech, onBack }: { tech: any; onBack: () => void }) {
             <div className="flex flex-col gap-4">
               {tech.projects.map((p: string) => (
                 <div key={p} className="group cursor-pointer">
-                  <div className="font-syne text-[0.9rem] font-bold text-white group-hover:text-accent transition-colors">{p}</div>
-                  <div className="font-mono text-[0.55rem] text-muted tracking-widest uppercase mt-0.5">Production Entry</div>
+                  <div className="font-syne text-[0.9rem] font-bold text-white group-hover:text-accent transition-colors">
+                    {p}
+                  </div>
+                  <div className="font-mono text-[0.55rem] text-muted tracking-widest uppercase mt-0.5">
+                    Production Entry
+                  </div>
                 </div>
               ))}
             </div>

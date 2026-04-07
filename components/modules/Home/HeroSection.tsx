@@ -6,6 +6,9 @@ import { scramble, splitChars, magneticEffect } from "@/lib/animations";
 import { gsap } from "gsap";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { FileText, Send, X } from "lucide-react";
+
+import picture from "@/public/profile.jpg"
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -21,6 +24,48 @@ export default function HeroSection() {
   const hbgX = useTransform(scrollY, [0, 800], [0, -120]);
   const avatarY = useTransform(scrollY, [0, 500], [0, 50]);
 
+  // Typewriter Effect Variables
+  const words = [
+    "Full-Stack Engineer",
+    "Web Developer",
+    "Problem Solver",
+    "Creative Thinker",
+  ];
+  const [wordIndex, setWordIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  // Typewriter Logic
+  useEffect(() => {
+    const currentWord = words[wordIndex];
+    let typingSpeed = isDeleting ? 45 : 95;
+
+    if (!isDeleting && displayText === currentWord) {
+      typingSpeed = 2000; // Pause at the end of the word
+    } else if (isDeleting && displayText === "") {
+      typingSpeed = 500; // Pause before starting the next word
+    }
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < currentWord.length) {
+          setDisplayText(currentWord.substring(0, displayText.length + 1));
+        } else {
+          setIsDeleting(true);
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(currentWord.substring(0, displayText.length - 1));
+        } else {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
+        }
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, wordIndex, words]);
+
   // Coordinates Effect
   const [coords, setCoords] = useState({ lat: "23.81", lon: "90.41" });
   useEffect(() => {
@@ -33,13 +78,10 @@ export default function HeroSection() {
   }, []);
 
   useEffect(() => {
-    // 1. Scramble Eyebrow
+    // 1. Initial Scramble Entry (Optional, keeping ref for consistency if needed elsewhere)
     if (heyRef.current) {
-      scramble(
-        heyRef.current,
-        "Professional Full-Stack Engineer — Bangladesh",
-        1100,
-      );
+      // We could use scramble for the first word or just let typewriter start
+      // scramble(heyRef.current, words[0], 800);
     }
 
     // 2. Name Reveal
@@ -133,7 +175,7 @@ export default function HeroSection() {
 
           <Avatar className="size-48 md:size-64 border-2 border-accent grayscale hover:grayscale-0 transition-all duration-700 shadow-[0_0_40px_rgba(200,255,0,0.1)] group-hover:shadow-[0_0_60px_rgba(200,255,0,0.2)]">
             <AvatarImage
-              src="https://github.com/shadcn.png"
+              src={picture.src}
               className="object-cover"
             />
             <AvatarFallback className="bg-card text-accent font-black text-2xl">
@@ -150,11 +192,14 @@ export default function HeroSection() {
 
       {/* Foreground Content */}
       <div className="relative z-10 max-w-[1200px]">
-        <div className="h-ey font-mono text-[0.7rem] text-accent tracking-[0.25em] uppercase mb-1 flex items-center gap-3.5 overflow-hidden">
+        <div className="h-ey font-mono text-[0.9rem] text-accent tracking-[0.25em] uppercase mb-1 flex items-center gap-3.5 overflow-hidden min-h-[1.5em]">
           <span className="block w-[30px] h-px bg-accent shrink-0" />
-          <span ref={heyRef} className="ei block">
-            Architecting Premium Digital Products
+          <span ref={heyRef} className="ei flex items-center">
+            {displayText}
+            <span className="w-[3px] h-5 bg-accent ml-1 animate-[blink_1s_step-end_infinite]" />
           </span>
+          <span className="block w-[10px] h-px bg-accent shrink-0" />
+          <span className="text-xs font-bold">BANGLADESH</span>
         </div>
 
         <div className="h-name text-[clamp(4.5rem,14vw,8rem)] font-extrabold leading-[0.82] tracking-[-0.045em] overflow-hidden mb-6">
@@ -187,6 +232,39 @@ export default function HeroSection() {
             </span>
           </div>
 
+          <div className="h-actions flex flex-col items-start gap-8">
+            <div className="flex flex-wrap items-center gap-4">
+              {/* Resume Button */}
+              <a
+                href="#"
+                className="group relative flex items-center gap-3 bg-accent text-black px-8 py-4 rounded-xl font-mono text-[0.7rem] font-bold tracking-widest uppercase hover:brightness-110 transition-all overflow-hidden"
+              >
+                <FileText size={16} />
+                View Resume
+                <span className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+              </a>
+
+              {/* Social Icons Hero Row */}
+              <div className="flex items-center gap-2">
+                {[
+                  { icon: <X size={18} />, href: "https://github.com/sajjadhosan" },
+                  { icon: <X size={18} />, href: "https://linkedin.com/in/sajjadhosan" },
+                  { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>, href: "https://twitter.com/sajjadhosan" },
+                ].map((social, i) => (
+                  <a
+                    key={i}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-4 border border-border rounded-xl text-muted hover:text-accent hover:border-accent hover:bg-accent/5 transition-all"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div className="flex flex-col items-center gap-10">
             <div className="h-avail flex items-center gap-3 font-mono text-[0.62rem] text-muted-foreground tracking-[0.15em] uppercase border border-border bg-card/50 px-6 py-3.5 rounded-full">
               <span className="pulse w-2 h-2 rounded-full bg-accent relative">
@@ -215,12 +293,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <style jsx>{`
-        .vertical-text {
-          writing-mode: vertical-rl;
-          text-orientation: mixed;
-        }
-      `}</style>
     </section>
   );
 }

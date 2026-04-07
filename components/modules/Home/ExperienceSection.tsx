@@ -26,7 +26,7 @@ export default function ExperienceSection() {
   return (
     <section id="experience" className="py-32 px-6 md:px-14 border-t border-border">
       <div className="sl font-mono text-[0.66rem] text-accent tracking-[0.22em] uppercase mb-4 flex items-center gap-3">
-        <span className="sn text-[0.58rem] text-muted">05</span>
+        <span className="sn text-[0.58rem] text-muted">06</span>
         Professional
         <span className="ln flex-1 h-px bg-border max-w-[55px]" />
       </div>

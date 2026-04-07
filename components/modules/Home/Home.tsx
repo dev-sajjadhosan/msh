@@ -7,6 +7,7 @@ import AboutSection from "./AboutSection";
 import SkillsSection from "./SkillsSection";
 import TechnologiesSection from "./TechnologiesSection";
 import ProjectsSection from "./ProjectsSection";
+import EducationSection from "./EducationSection";
 import ExperienceSection from "./ExperienceSection";
 import ContactSection from "./ContactSection";
 import Footer from "./Footer";
@@ -40,6 +41,7 @@ export default function Home() {
           <SkillsSection />
           <TechnologiesSection />
           <ProjectsSection />
+          <EducationSection />
           <ExperienceSection />
           <ContactSection />
           <Footer />
