@@ -1,17 +1,24 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
+import { X, Mail, MessageSquare } from "lucide-react";
+import Link from "next/link";
+
+const NAV_ITEMS = [
+  { label: "Home", href: "#hero" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact", href: "#contact" },
+];
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
-  const sidebarRef = useRef<HTMLElement>(null);
-  const curveRef = useRef<SVGPathElement>(null);
-  const menuIconRef = useRef<HTMLDivElement>(null);
-
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
@@ -23,160 +30,169 @@ export default function Sidebar() {
     return () => window.removeEventListener("contextmenu", handleContextMenu);
   }, []);
 
-  const navLinksRef = useRef<(HTMLAnchorElement | null)[]>([]);
-
   useEffect(() => {
-    if (!sidebarRef.current || !curveRef.current) return;
-
-    // The user's specific path coordinates (adapted for left-to-right)
-    const initialPath = "M 0 0 H 0 Q 0 50 0 100 H 0 z";
-    const midPath = "M 0 0 H 50 Q 100 50 50 100 H 0 z";
-    const endPath = "M 0 0 H 100 Q 100 50 100 100 H 0 z";
+    const tl = gsap.timeline();
 
     if (isOpen) {
-      // Open Timeline
-      const tl = gsap.timeline();
-
-      tl.to(sidebarRef.current, {
-        x: 0,
-        opacity: 1,
-        duration: 0.1,
-      })
-        .to(curveRef.current, {
-          attr: { d: midPath },
-          duration: 0.4,
-          ease: "power2.in",
-        })
-        .to(curveRef.current, {
-          attr: { d: endPath },
-          duration: 0.4,
-          ease: "power2.out",
-        });
-
-      // Staggered nav links
-      gsap.fromTo(
-        navLinksRef.current,
-        { x: -50, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: "power4.out",
-          delay: 0.4,
-        },
+      // 1. Morph BG (Liquid fill)
+      tl.to(pathRef.current, {
+        attr: { d: "M 0 0 V 100 H 100 V 0 Z" },
+        duration: 1.1,
+        ease: "power4.inOut"
+      });
+      // 2. Reveal Content (Starts after 0.6s of morph)
+      tl.fromTo(".sidebar-item", 
+        { y: 30, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 0.7, stagger: 0.08, ease: "power3.out" },
+        "-=0.5"
       );
     } else {
-      // Close Timeline
-      const tl = gsap.timeline();
-
-      tl.to(curveRef.current, {
-        attr: { d: midPath },
-        duration: 0.3,
-        ease: "power2.in",
-      })
-        .to(curveRef.current, {
-          attr: { d: initialPath },
-          duration: 0.4,
-          ease: "power2.out",
-        })
-        .to(sidebarRef.current, {
-          x: "-100%",
-          duration: 0.1,
-        });
+      // 1. Hide Content Fast
+      tl.to(".sidebar-item", {
+        y: -20,
+        opacity: 0,
+        duration: 0.4,
+        stagger: 0.03,
+        ease: "power2.in"
+      });
+      // 2. Morph BG back (Liquid shrink)
+      tl.to(pathRef.current, {
+        attr: { d: "M 100 0 V 100 H 100 V 0 Z" }, // Shrink right
+        duration: 0.9,
+        ease: "power4.inOut"
+      }, "-=0.2");
     }
   }, [isOpen]);
 
+  const closeSidebar = () => setIsOpen(false);
+
   return (
-    <>
-      {/* Floating Menu Icon - Neon Style */}
-      <div
-        ref={menuIconRef}
-        onClick={toggleSidebar}
-        className="fixed top-10 right-10 z-100 w-16 h-16 bg-black border border-cyan-500/30 rounded-full flex items-center justify-center cursor-pointer shadow-[0_0_20px_rgba(6,182,212,0.2)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105 active:scale-95 transition-all group overflow-hidden"
-      >
-        <div className="relative w-8 h-8 flex flex-col justify-center items-center">
-          <span
-            className={`absolute h-[2px] w-6 bg-cyan-400 rounded-full transition-all duration-500 ease-in-out shadow-[0_0_8px_#22d3ee] ${isOpen ? "-rotate-45" : "translate-y-[-6px]"}`}
-          ></span>
-          <span
-            className={`absolute h-[2px] w-4 bg-cyan-400 rounded-full transition-all duration-300 ease-in-out shadow-[0_0_8px_#22d3ee] ${isOpen ? "opacity-0 translate-x-4" : "translate-x-1"}`}
-          ></span>
-          <span
-            className={`absolute h-[2px] w-6 bg-cyan-400 rounded-full transition-all duration-500 ease-in-out shadow-[0_0_8px_#22d3ee] ${isOpen ? "rotate-45" : "translate-y-[6px]"}`}
-          ></span>
-        </div>
-      </div>
-
-      {/* Sidebar Overlay - Liquid Morph Styled */}
-      <aside
-        ref={sidebarRef}
-        className="fixed inset-0 h-full w-[450px] z-90 -translate-x-full overflow-visible bg-transparent text-white"
-      >
-        {/* The Liquid SVG Container */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none overflow-visible uppercase">
-          <svg
-            className="w-full h-full"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <linearGradient
-                id="sidebarGrad"
-                x1="0"
-                y1="0"
-                x2="100"
-                y2="100"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset="0.2" stop-color="rgb(255, 135, 9)" />
-                <stop offset="0.7" stop-color="rgb(247, 189, 248)" />
-              </linearGradient>
-            </defs>
-            <path
-              ref={curveRef}
-              d="M 0 0 H 0 Q 0 50 0 100 H 0 z"
-              fill="url(#sidebarGrad)"
-              className="drop-shadow-[15px_0_30px_rgba(255,135,9,0.3)]"
-            />
-          </svg>
-        </div>
-
-        {/* Navigation Content */}
-        <div className="relative z-10 flex flex-col h-full p-20 justify-center">
-          <div className="mb-12">
-            <span className="text-cyan-500/60 uppercase tracking-[0.3em] text-[10px] font-bold">
-              PORTFOLIO.NAV
-            </span>
-          </div>
-          <nav className="flex flex-col space-y-8">
-            {["Home", "Projects", "Services", "Insights", "Contact"].map(
-              (item, index) => (
-                <a
-                  key={item}
-                  ref={(el) => {
-                    navLinksRef.current[index] = el;
-                  }}
-                  href={`#${item.toLowerCase()}`}
-                  className="group relative text-5xl font-bold tracking-tighter hover:text-cyan-400 transition-all duration-300"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <span className="relative z-10">{item}</span>
-                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-cyan-400 shadow-[0_0_12px_#22d3ee] transition-all duration-500 group-hover:w-full"></span>
-                </a>
-              ),
-            )}
-          </nav>
-        </div>
-      </aside>
-
-      {/* Backdrop */}
+    <AnimatePresence mode="wait">
       {isOpen && (
-        <div
-          onClick={() => setIsOpen(false)}
-          className="fixed inset-0 bg-black/60 backdrop-blur-[2px] z-80"
-        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.3 }}
+          className="fixed inset-0 z-[200] pointer-events-none"
+        >
+          <div
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm pointer-events-auto"
+            onClick={closeSidebar}
+          />
+
+          <div
+            ref={sidebarRef}
+            className="absolute right-0 top-0 bottom-0 w-full md:w-[450px] pointer-events-auto overflow-hidden"
+          >
+            <svg
+              className="absolute inset-0 w-full h-full"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+            >
+              <path
+                ref={pathRef}
+                d="M 100 0 V 100 H 100 V 0 Z"
+                fill="var(--card)"
+              />
+            </svg>
+
+            <div className="relative z-10 h-full flex flex-col p-12 md:p-16">
+              <button
+                onClick={closeSidebar}
+                className="self-end p-2 hover:bg-surface rounded-full transition-colors text-accent"
+              >
+                <X size={28} />
+              </button>
+
+              <div className="flex flex-col gap-1.5 mb-5">
+                <span className="font-mono text-[0.65rem] text-accent tracking-[0.2em] uppercase">
+                  Navigation
+                </span>
+                <div className="h-px w-12 bg-accent opacity-30" />
+              </div>
+
+              <nav className="flex flex-col gap-8">
+                {NAV_ITEMS.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={closeSidebar}
+                    className="sidebar-item font-syne text-5xl font-extrabold text-foreground/50 hover:text-accent transition-all hover:translate-x-4 flex items-center gap-4 group"
+                  >
+                    <span className="text-xl font-mono text-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                      /
+                    </span>
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+
+              <div className="mt-auto pt-12 flex flex-col gap-8">
+                <div className="flex gap-6">
+                  {/* Twitter/X */}
+                  <a
+                    href="#"
+                    className="sidebar-item p-3 rounded-full border border-border hover:border-accent hover:text-accent transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                  </a>
+                  {/* Github */}
+                  <a
+                    href="#"
+                    className="sidebar-item p-3 rounded-full border border-white/10 hover:border-accent hover:text-accent transition-colors"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3,37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                  </a>
+                  {/* LinkedIn */}
+                  <a
+                    href="#"
+                    className="sidebar-item p-3 rounded-full border border-white/10 hover:border-accent hover:text-accent transition-colors"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect x="2" y="9" width="4" height="12"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                  {/* Mail */}
+                  <a
+                    href="#"
+                    className="sidebar-item p-3 rounded-full border border-white/10 hover:border-accent hover:text-accent transition-colors"
+                  >
+                    <Mail size={20} />
+                  </a>
+                </div>
+                <div className="sidebar-item font-mono text-[0.65rem] text-muted tracking-widest uppercase">
+                  Based in Rangpur, Bangladesh — UTC+6
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       )}
-    </>
+    </AnimatePresence>
   );
 }
