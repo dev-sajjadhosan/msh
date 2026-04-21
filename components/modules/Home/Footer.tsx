@@ -5,6 +5,7 @@ import { useRef, useEffect, useState } from "react";
 import { scramble, magneticEffect } from "@/lib/animations";
 import Link from "next/link";
 import { Link as Github, Link2 as Linkedin, Book as Twitter, ArrowUpRight, Mail, MapPin, Clock, Play as Youtube, Camera as Instagram } from "lucide-react";
+import { Discord, Facebook, GitHubCopilotDark, LinkedIn } from "@ridemountainpig/svgl-react";
 
 export default function Footer() {
   const logoRef = useRef<HTMLDivElement>(null);
@@ -45,10 +46,10 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { name: "GitHub", href: "https://github.com/sajjadhosan", icon: <Github size={18} /> },
-    { name: "LinkedIn", href: "https://linkedin.com/in/sajjadhosan", icon: <Linkedin size={18} /> },
-    { name: "Twitter", href: "https://twitter.com/sajjadhosan", icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg> },
-    { name: "Instagram", href: "#", icon: <Instagram size={18} /> },
+    { name: "GitHub", href: "https://github.com/dev-sajjadhosan", icon: <GitHubCopilotDark className="size-5" /> },
+    { name: "LinkedIn", href: "https://www.linkedin.com/in/devsajjadhosan", icon: <LinkedIn className="size-5"  /> },
+    { name: "Discord", href: "#", icon: <Discord className="size-5" /> },
+    { name: "Facebook", href: "https://www.facebook.com/MohammadSajjadHosan0", icon: <Facebook className="size-5" /> },
   ];
 
   return (
@@ -88,7 +89,7 @@ export default function Footer() {
                   <li key={link.name}>
                     <Link 
                       href={link.href}
-                      className="footer-link inline-flex items-center gap-1.5 font-syne text-[1.1rem] font-bold text-white hover:text-accent transition-colors group"
+                      className="footer-link inline-flex items-center gap-1.5 font-syne text-[1.1rem] text-white hover:text-accent transition-colors group"
                     >
                       {link.name}
                       <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
@@ -102,13 +103,13 @@ export default function Footer() {
           <div className="lg:col-span-4">
              <div className="font-mono text-[0.62rem] text-accent tracking-[0.3em] uppercase mb-10 opacity-60">Let's Engineering</div>
              <div className="space-y-8">
-                <a href="mailto:sajjad@example.com" className="footer-link flex items-center gap-4 group">
+                <a href="mailto:devsajjadhosan@gmail.com" className="footer-link flex items-center gap-4 group">
                    <div className="w-12 h-12 bg-card border border-border rounded-full flex items-center justify-center text-muted group-hover:bg-accent group-hover:text-bg group-hover:border-accent transition-all duration-500">
-                      <Mail size={18} />
+                      <Mail size={18} />দ
                    </div>
                    <div>
                       <div className="font-mono text-[0.55rem] text-muted uppercase tracking-widest mb-1">Direct Contact</div>
-                      <div className="font-syne text-[1rem] font-bold text-white">sajjad@example.com</div>
+                      <div className="font-syne text-[1rem] text-white">devsajjadhosan@gmail.com</div>
                    </div>
                 </a>
 
@@ -118,7 +119,7 @@ export default function Footer() {
                    </div>
                    <div>
                       <div className="font-mono text-[0.55rem] text-muted uppercase tracking-widest mb-1">Based In</div>
-                      <div className="font-syne text-[1rem] font-bold text-white">Rangpur, BD</div>
+                      <div className="font-syne text-[1rem] text-white">Nilphamari, Bangladesh</div>
                    </div>
                 </div>
 
@@ -142,11 +143,11 @@ export default function Footer() {
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
            <div className="flex items-center gap-3 font-mono text-[0.62rem] text-muted tracking-widest uppercase">
               <Clock size={12} className="text-accent" />
-              Rangpur, BD — {time}
+              Nilphamari, Bangladesh — {time}
            </div>
 
            <div className="font-mono text-[0.62rem] text-muted tracking-widest uppercase">
-              © {new Date().getFullYear()} Sajjad Hosan — Handcrafted with precision
+              © {new Date().getFullYear()} Mohammad Sajjad Hosan — Handcrafted with precision
            </div>
 
            <div className="flex items-center gap-6 font-mono text-[0.62rem] text-muted tracking-widest uppercase">

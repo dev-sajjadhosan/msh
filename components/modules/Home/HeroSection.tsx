@@ -8,7 +8,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { FileText, Send, X } from "lucide-react";
 
-import picture from "@/public/profile.jpg"
+import picture from "@/public/profile.jpg";
+import {
+  Facebook,
+  GitHubCopilotDark,
+  LinkedIn,
+} from "@ridemountainpig/svgl-react";
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -174,10 +179,7 @@ export default function HeroSection() {
           </div>
 
           <Avatar className="size-48 md:size-64 border-2 border-accent grayscale hover:grayscale-0 transition-all duration-700 shadow-[0_0_40px_rgba(200,255,0,0.1)] group-hover:shadow-[0_0_60px_rgba(200,255,0,0.2)]">
-            <AvatarImage
-              src={picture.src}
-              className="object-cover"
-            />
+            <AvatarImage src={picture.src} className="object-cover" />
             <AvatarFallback className="bg-card text-accent font-black text-2xl">
               MSH
             </AvatarFallback>
@@ -236,7 +238,7 @@ export default function HeroSection() {
             <div className="flex flex-wrap items-center gap-4">
               {/* Resume Button */}
               <a
-                href="#"
+                href="https://drive.google.com/file/d/1D0xhim0QunXEiFUuS5d51P22n44wmVB3/view?usp=drive_link"
                 className="group relative flex items-center gap-3 bg-accent text-black px-8 py-4 rounded-xl font-mono text-[0.7rem] font-bold tracking-widest uppercase hover:brightness-110 transition-all overflow-hidden"
               >
                 <FileText size={16} />
@@ -247,9 +249,31 @@ export default function HeroSection() {
               {/* Social Icons Hero Row */}
               <div className="flex items-center gap-2">
                 {[
-                  { icon: <X size={18} />, href: "https://github.com/sajjadhosan" },
-                  { icon: <X size={18} />, href: "https://linkedin.com/in/sajjadhosan" },
-                  { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>, href: "https://twitter.com/sajjadhosan" },
+                  {
+                    icon: <GitHubCopilotDark className="size-5" />,
+                    href: "https://github.com/dev-sajjadhosan",
+                  },
+                  {
+                    icon: <LinkedIn className="size-5" />,
+                    href: "https://www.linkedin.com/in/devsajjadhosan",
+                  },
+                  {
+                    icon: <Facebook className="size-5" />,
+                    href: "https://www.facebook.com/MohammadSajjadHosan0",
+                  },
+                  // {
+                  //   icon: (
+                  //     <svg
+                  //       width="18"
+                  //       height="18"
+                  //       viewBox="0 0 24 24"
+                  //       fill="currentColor"
+                  //     >
+                  //       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  //     </svg>
+                  //   ),
+                  //   href: "https://twitter.com/sajjadhosan",
+                  // },
                 ].map((social, i) => (
                   <a
                     key={i}
@@ -292,7 +316,6 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-
     </section>
   );
 }

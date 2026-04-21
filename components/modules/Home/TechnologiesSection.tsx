@@ -57,6 +57,7 @@ import {
   GitHubUrl,
   GitUrl,
   MongoDBDark,
+  Firebase
 } from "@ridemountainpig/svgl-react";
 
 const STACK_1 = [
@@ -77,6 +78,7 @@ const STACK_1 = [
 const STACK_2 = [
   "Git & GitHub",
   "Vercel",
+  "Firebase",
   "Better Auth",
   "TanStack Form",
   "HTML5",
@@ -402,6 +404,15 @@ const CATEGORIZED_TECH = [
     love: "Production deployment, edge analytics, and infrastructure as code.",
     projects: ["All Prod Projects"],
     features: ["Analytics", "Previews", "Edge Config"],
+  },
+  {
+    name: "Firebase",
+    icon: <Firebase className="w-full h-full" />,
+    category: "tools",
+    exp: 85,
+    love: "Production deployment, edge analytics, and infrastructure as code.",
+    projects: [],
+    features: [],
   },
   {
     name: "Railway",
