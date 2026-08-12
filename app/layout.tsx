@@ -20,7 +20,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MSH - Full Stack Developer",
+  title: "msh - Full Stack Developer",
   description:
     "Assalamu Alaikum, I'm MSH, a Full Stack Developer with a passion for creating innovative web applications. Welcome to my personal website!",
 };

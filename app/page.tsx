@@ -1,6 +1,7 @@
 import AboutMe from "@/components/custom/about_me";
 import Header from "@/components/custom/header";
 import Hero from "@/components/custom/hero";
+import Projects from "@/components/custom/projects";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -35,6 +36,7 @@ export default function Home() {
       <Header />
       <Hero />
       <AboutMe />
+      <Projects/>
     </div>
   );
 }
