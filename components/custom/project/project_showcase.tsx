@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Card, CardContent } from "../ui/card";
+import { Card, CardContent } from "../../ui/card";
 import {
   Dialog,
   DialogContent,
@@ -9,8 +9,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import image1 from "../../public/image_1.jpg";
-import { Badge } from "../ui/badge";
+import image1 from "../../../public/image_1.jpg";
+import { Badge } from "../../ui/badge";
 import {
   ArrowBigRightDash,
   Bug,
@@ -25,9 +25,10 @@ import {
   Video,
 } from "lucide-react";
 import { TbBrandReact, TbGitFork } from "react-icons/tb";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { VscRepo } from "react-icons/vsc";
 import ProjectPop from "./project_pop";
+import ProjectVideo from "./project_video";
 
 export default function ProjectShowCase() {
   return (
@@ -70,9 +71,7 @@ export default function ProjectShowCase() {
                 <div className="mt-2 w-full h-full flex flex-col justify-between">
                   <div className="flex items-center justify-between gap-5 w-full">
                     <div className="w-lg h-40 border-4 rounded-xl p-1 flex items-center justify-center">
-                      <Button variant={"outline"} size={"icon"}>
-                        <PlayCircle />
-                      </Button>
+                      <ProjectVideo />
                     </div>
                     <div className="flex flex-col gap-1">
                       <div className="flex items-center justify-between w-full">

@@ -6,9 +6,10 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Button } from "../ui/button";
+
 import { ReactNode, ElementType } from "react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 interface ProjectPopProps {
   btnChildren?: ReactNode;
