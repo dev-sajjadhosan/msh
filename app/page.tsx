@@ -2,6 +2,7 @@ import AboutMe from "@/components/custom/about_me";
 import Header from "@/components/custom/header";
 import Hero from "@/components/custom/hero";
 import Projects from "@/components/custom/project/projects";
+import TechSkills from "@/components/custom/tech_skills";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <AboutMe />
       <Projects />
+      <TechSkills/>
     </div>
   );
 }
