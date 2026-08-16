@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "Assalamu Alaikum, I'm MSH, a Full Stack Developer with a passion for creating innovative web applications. Welcome to my personal website!",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children, modal }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
@@ -39,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem
           disableTransitionOnChange
         >
-          <TooltipProvider>{children}</TooltipProvider>
+          <TooltipProvider>{children}{modal}</TooltipProvider>
         </ThemeProvider>
       </body>
     </html>
